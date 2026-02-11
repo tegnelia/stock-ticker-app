@@ -53,6 +53,7 @@ class StockFetcher(QThread):
                 price=price,
                 change=change,
                 change_percent=change_percent,
+                prev_close=prev_close,
                 last_updated=datetime.now(),
                 history=history,
             )

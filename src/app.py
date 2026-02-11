@@ -1,5 +1,7 @@
 """Main application class coordinating all components."""
 
+import fcntl
+import os
 import sys
 from pathlib import Path
 
@@ -11,6 +13,36 @@ from .models import AppConfig
 from .popup import PopupWindow
 from .stock_service import StockService
 from .tray import SystemTrayManager
+
+
+class SingleInstance:
+    """Ensures only one instance of the application runs at a time."""
+
+    def __init__(self):
+        self.lockfile = Path.home() / ".config" / "stock-ticker" / "app.lock"
+        self.lockfile.parent.mkdir(parents=True, exist_ok=True)
+        self.fp = None
+
+    def try_lock(self) -> bool:
+        """Try to acquire the lock. Returns True if successful."""
+        try:
+            self.fp = open(self.lockfile, 'w')
+            fcntl.flock(self.fp.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            self.fp.write(str(os.getpid()))
+            self.fp.flush()
+            return True
+        except (IOError, OSError):
+            return False
+
+    def release(self):
+        """Release the lock."""
+        if self.fp:
+            try:
+                fcntl.flock(self.fp.fileno(), fcntl.LOCK_UN)
+                self.fp.close()
+                self.lockfile.unlink(missing_ok=True)
+            except Exception:
+                pass
 
 
 class StockTickerApp:
@@ -188,5 +220,14 @@ class StockTickerApp:
 
 def main() -> int:
     """Entry point for the application."""
-    app = StockTickerApp()
-    return app.run()
+    # Ensure single instance
+    instance_lock = SingleInstance()
+    if not instance_lock.try_lock():
+        print("Stock Ticker is already running.")
+        return 1
+
+    try:
+        app = StockTickerApp()
+        return app.run()
+    finally:
+        instance_lock.release()

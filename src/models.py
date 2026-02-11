@@ -13,6 +13,7 @@ class Stock:
     price: float = 0.0
     change: float = 0.0
     change_percent: float = 0.0
+    prev_close: float = 0.0  # Previous day's close price
     last_updated: Optional[datetime] = None
     error: Optional[str] = None
     history: list[float] = field(default_factory=list)  # Historical prices for chart

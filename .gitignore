@@ -25,3 +25,7 @@ htmlcov/
 
 # Config (user-specific)
 # Note: config.json is in ~/.config/stock-ticker/
+
+# Build artifacts
+*.deb
+packaging/stock-ticker_*/

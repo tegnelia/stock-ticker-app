@@ -21,13 +21,15 @@ class SparklineWidget(QWidget):
         super().__init__(parent)
         self.data: list[float] = []
         self.is_up: bool = True  # Based on daily change (vs previous close)
+        self.prev_close: float = 0.0  # Previous day's close price
         self.setMinimumSize(80, 30)
         self.setMaximumHeight(35)
 
-    def set_data(self, data: list[float], is_up: bool = True):
+    def set_data(self, data: list[float], is_up: bool = True, prev_close: float = 0.0):
         """Set the data points for the sparkline."""
         self.data = data
         self.is_up = is_up
+        self.prev_close = prev_close
         self.update()
 
     def paintEvent(self, event):
@@ -45,6 +47,12 @@ class SparklineWidget(QWidget):
 
         min_val = min(self.data)
         max_val = max(self.data)
+
+        # Include prev_close in the range calculation if it's set
+        if self.prev_close > 0:
+            min_val = min(min_val, self.prev_close)
+            max_val = max(max_val, self.prev_close)
+
         val_range = max_val - min_val if max_val != min_val else 1
 
         # Color based on daily change (current price vs previous close)
@@ -55,7 +63,16 @@ class SparklineWidget(QWidget):
             line_color = QColor("#F44336")  # Red
             fill_color = QColor(244, 67, 54, 50)  # Red with alpha
 
-        # Build the path
+        # Draw previous close line first (so it's behind the chart)
+        if self.prev_close > 0 and min_val <= self.prev_close <= max_val:
+            prev_close_y = height - padding - ((self.prev_close - min_val) / val_range) * (height - 2 * padding)
+            pen = QPen(QColor("#FFD700"))  # Gold/yellow color
+            pen.setWidth(1)
+            pen.setStyle(Qt.DashLine)
+            painter.setPen(pen)
+            painter.drawLine(int(padding), int(prev_close_y), int(width - padding), int(prev_close_y))
+
+        # Build the price path
         path = QPainterPath()
         fill_path = QPainterPath()
 
@@ -80,9 +97,10 @@ class SparklineWidget(QWidget):
         # Draw fill
         painter.fillPath(fill_path, fill_color)
 
-        # Draw line
+        # Draw price line
         pen = QPen(line_color)
         pen.setWidth(2)
+        pen.setStyle(Qt.SolidLine)
         painter.setPen(pen)
         painter.drawPath(path)
 
@@ -216,7 +234,11 @@ class StockItemWidget(QFrame):
 
         # Update sparkline (color based on daily change vs previous close)
         if self.stock.history:
-            self.sparkline.set_data(self.stock.history, is_up=self.stock.change >= 0)
+            self.sparkline.set_data(
+                self.stock.history,
+                is_up=self.stock.change >= 0,
+                prev_close=self.stock.prev_close
+            )
             self.sparkline.show()
         else:
             self.sparkline.hide()
