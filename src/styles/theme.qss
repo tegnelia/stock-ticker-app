@@ -1,0 +1,290 @@
+/* Dark Theme for Stock Ticker App */
+
+/* Main Popup Window */
+#PopupWindow {
+    background-color: rgba(30, 30, 35, 240);
+    border: 1px solid #3a3a45;
+    border-radius: 12px;
+}
+
+/* Title Bar */
+#TitleBar {
+    background-color: rgba(40, 40, 48, 255);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 8px 12px;
+}
+
+#TitleLabel {
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#CloseButton {
+    background-color: transparent;
+    border: none;
+    color: #808080;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#CloseButton:hover {
+    background-color: #F44336;
+    color: white;
+}
+
+/* Stock List */
+#StockList {
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+}
+
+/* Stock Item */
+#StockItem {
+    background-color: rgba(50, 50, 58, 200);
+    border: 1px solid #3a3a45;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 4px 0px;
+}
+
+#StockItem:hover {
+    background-color: rgba(60, 60, 70, 220);
+    border-color: #4a4a55;
+}
+
+#StockSymbol {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#StockName {
+    color: #a0a0a0;
+    font-size: 11px;
+}
+
+#StockPrice {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}
+
+#StockChange {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}
+
+#StockChangeUp {
+    color: #4CAF50;
+}
+
+#StockChangeDown {
+    color: #F44336;
+}
+
+#StockChangeFlat {
+    color: #9E9E9E;
+}
+
+/* Add Stock Section */
+#AddStockSection {
+    background-color: rgba(40, 40, 48, 200);
+    border-top: 1px solid #3a3a45;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 12px;
+}
+
+#SymbolInput {
+    background-color: rgba(60, 60, 70, 255);
+    border: 1px solid #4a4a55;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+#SymbolInput:focus {
+    border-color: #6C63FF;
+}
+
+#SymbolInput::placeholder {
+    color: #707070;
+}
+
+#AddButton {
+    background-color: #6C63FF;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#AddButton:hover {
+    background-color: #5B52EE;
+}
+
+#AddButton:pressed {
+    background-color: #4A41DD;
+}
+
+/* Move Buttons */
+#MoveButton {
+    background-color: transparent;
+    border: none;
+    color: #606060;
+    font-size: 8px;
+    padding: 0px;
+    border-radius: 3px;
+}
+
+#MoveButton:hover {
+    background-color: rgba(108, 99, 255, 0.3);
+    color: #6C63FF;
+}
+
+#MoveButton:pressed {
+    background-color: rgba(108, 99, 255, 0.5);
+}
+
+/* Remove Button */
+#RemoveButton {
+    background-color: transparent;
+    border: none;
+    color: #707070;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+#RemoveButton:hover {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #F44336;
+}
+
+/* Scrollbar */
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    background-color: rgba(40, 40, 48, 100);
+    width: 8px;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgba(100, 100, 110, 150);
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: rgba(120, 120, 130, 200);
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Status Label */
+#StatusLabel {
+    color: #707070;
+    font-size: 10px;
+    padding: 4px 8px;
+}
+
+/* Loading Indicator */
+#LoadingLabel {
+    color: #a0a0a0;
+    font-size: 12px;
+}
+
+/* Error State */
+#ErrorLabel {
+    color: #F44336;
+    font-size: 11px;
+}
+
+/* Resize Handle */
+#ResizeHandle {
+    background-color: transparent;
+}
+
+/* Settings Bar */
+#SettingsBar {
+    background-color: rgba(35, 35, 42, 255);
+    border-bottom: 1px solid #3a3a45;
+}
+
+#SettingsLabel {
+    color: #909090;
+    font-size: 11px;
+}
+
+#SettingsCombo {
+    background-color: rgba(50, 50, 58, 255);
+    border: 1px solid #4a4a55;
+    border-radius: 4px;
+    color: #e0e0e0;
+    padding: 4px 8px;
+    font-size: 11px;
+    min-width: 70px;
+}
+
+#SettingsCombo:hover {
+    border-color: #5a5a65;
+}
+
+#SettingsCombo:focus {
+    border-color: #6C63FF;
+}
+
+#SettingsCombo::drop-down {
+    border: none;
+    width: 20px;
+}
+
+#SettingsCombo::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #909090;
+    margin-right: 6px;
+}
+
+#SettingsCombo QAbstractItemView {
+    background-color: rgba(45, 45, 52, 255);
+    border: 1px solid #4a4a55;
+    border-radius: 4px;
+    color: #e0e0e0;
+    selection-background-color: #6C63FF;
+    selection-color: white;
+    padding: 4px;
+}
+
+#SettingsCombo QAbstractItemView::item {
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+
+#SettingsCombo QAbstractItemView::item:hover {
+    background-color: rgba(108, 99, 255, 0.3);
+}
