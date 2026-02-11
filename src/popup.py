@@ -22,8 +22,8 @@ class SparklineWidget(QWidget):
         self.data: list[float] = []
         self.is_up: bool = True  # Based on daily change (vs previous close)
         self.prev_close: float = 0.0  # Previous day's close price
-        self.setMinimumSize(80, 30)
-        self.setMaximumHeight(35)
+        self.setMinimumSize(60, 22)
+        self.setMaximumHeight(25)
 
     def set_data(self, data: list[float], is_up: bool = True, prev_close: float = 0.0):
         """Set the data points for the sparkline."""
@@ -121,12 +121,12 @@ class StockItemWidget(QFrame):
 
     def _setup_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(12, 10, 12, 10)
-        layout.setSpacing(6)
+        layout.setContentsMargins(8, 6, 8, 6)
+        layout.setSpacing(3)
 
         # Top row: symbol, name, remove button
         top_row = QHBoxLayout()
-        top_row.setSpacing(8)
+        top_row.setSpacing(6)
 
         # Left side: symbol and name
         left_layout = QVBoxLayout()
@@ -168,7 +168,7 @@ class StockItemWidget(QFrame):
         # Move up button
         self.move_up_btn = QPushButton("▲")
         self.move_up_btn.setObjectName("MoveButton")
-        self.move_up_btn.setFixedSize(20, 16)
+        self.move_up_btn.setFixedSize(16, 12)
         self.move_up_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_up_btn.clicked.connect(lambda: self.move_up_clicked.emit(self.stock.symbol))
         buttons_layout.addWidget(self.move_up_btn)
@@ -176,7 +176,7 @@ class StockItemWidget(QFrame):
         # Move down button
         self.move_down_btn = QPushButton("▼")
         self.move_down_btn.setObjectName("MoveButton")
-        self.move_down_btn.setFixedSize(20, 16)
+        self.move_down_btn.setFixedSize(16, 12)
         self.move_down_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_down_btn.clicked.connect(lambda: self.move_down_clicked.emit(self.stock.symbol))
         buttons_layout.addWidget(self.move_down_btn)
@@ -186,7 +186,7 @@ class StockItemWidget(QFrame):
         # Remove button
         self.remove_btn = QPushButton("×")
         self.remove_btn.setObjectName("RemoveButton")
-        self.remove_btn.setFixedSize(24, 24)
+        self.remove_btn.setFixedSize(20, 20)
         self.remove_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.remove_btn.clicked.connect(lambda: self.remove_clicked.emit(self.stock.symbol))
         top_row.addWidget(self.remove_btn)

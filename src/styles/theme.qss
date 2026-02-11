@@ -47,9 +47,9 @@
 #StockItem {
     background-color: rgba(50, 50, 58, 200);
     border: 1px solid #3a3a45;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 4px 0px;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 2px 0px;
 }
 
 #StockItem:hover {
@@ -59,24 +59,24 @@
 
 #StockSymbol {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
 }
 
 #StockName {
     color: #a0a0a0;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 #StockPrice {
     color: #ffffff;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
 }
 
 #StockChange {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
     font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
 }
