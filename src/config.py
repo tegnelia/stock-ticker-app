@@ -1,7 +1,6 @@
 """Configuration management for the stock ticker app."""
 
 import json
-import os
 from pathlib import Path
 from typing import Any
 

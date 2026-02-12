@@ -1,10 +1,9 @@
 """Floating popup window for displaying stock prices."""
 
 from datetime import datetime
-from typing import Callable
 
-from PySide6.QtCore import Qt, QPoint, Signal, QPropertyAnimation, QEasingCurve, Property
-from PySide6.QtGui import QFont, QCursor, QPainter, QPen, QColor, QPainterPath
+from PySide6.QtCore import Qt, QPoint, Signal, QPropertyAnimation, QEasingCurve
+from PySide6.QtGui import QCursor, QPainter, QPen, QColor, QPainterPath
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
     QLineEdit, QScrollArea, QFrame, QSizeGrip, QGraphicsOpacityEffect,

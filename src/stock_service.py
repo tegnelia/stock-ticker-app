@@ -1,7 +1,6 @@
 """Stock data fetching service using yfinance."""
 
 from datetime import datetime
-from typing import Callable
 
 import yfinance as yf
 from PySide6.QtCore import QObject, QThread, Signal, QTimer

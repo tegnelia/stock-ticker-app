@@ -5,11 +5,9 @@ import os
 import sys
 from pathlib import Path
 
-from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import QApplication
 
 from .config import ConfigManager
-from .models import AppConfig
 from .popup import PopupWindow
 from .stock_service import StockService
 from .tray import SystemTrayManager
