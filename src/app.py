@@ -7,7 +7,7 @@ from pathlib import Path
 
 from PySide6.QtWidgets import QApplication
 
-from .config import ConfigManager
+from .config import ConfigManager, get_config_dir
 from .popup import PopupWindow
 from .stock_service import StockService
 from .tray import SystemTrayManager
@@ -17,7 +17,7 @@ class SingleInstance:
     """Ensures only one instance of the application runs at a time."""
 
     def __init__(self):
-        self.lockfile = Path.home() / ".config" / "stock-ticker" / "app.lock"
+        self.lockfile = get_config_dir() / "app.lock"
         self.lockfile.parent.mkdir(parents=True, exist_ok=True)
         self.fp = None
 
