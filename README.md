@@ -21,7 +21,9 @@ A desktop stock price tracker that lives in your system tray. It displays a floa
 
 ## Screenshot
 
-The popup displays each stock with its current price, daily change (absolute and percentage), and a sparkline chart. Default watchlist includes major indices: Dow Jones, NASDAQ, S&P 500, and NYSE Composite.
+<p align="center">
+  <img src="assets/screenshots/screenshot.png" alt="Stock Ticker screenshot" width="320">
+</p>
 
 ## Requirements
 
