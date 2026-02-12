@@ -28,4 +28,5 @@ htmlcov/
 
 # Build artifacts
 *.deb
+*.dmg
 packaging/stock-ticker_*/
