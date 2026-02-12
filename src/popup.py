@@ -34,10 +34,12 @@ class SparklineWidget(QWidget):
 
     def paintEvent(self, event):
         """Draw the sparkline chart."""
-        if not self.data or len(self.data) < 2:
-            return
-
         painter = QPainter(self)
+        painter.eraseRect(self.rect())
+
+        if not self.data or len(self.data) < 2:
+            painter.end()
+            return
         painter.setRenderHint(QPainter.Antialiasing)
 
         # Calculate bounds
@@ -263,6 +265,7 @@ class StockItemWidget(QFrame):
         anim.setStartValue(0.5)
         anim.setEndValue(1.0)
         anim.setEasingCurve(QEasingCurve.OutCubic)
+        anim.finished.connect(lambda: self.setGraphicsEffect(None))
         anim.start(QPropertyAnimation.DeleteWhenStopped)
 
 
