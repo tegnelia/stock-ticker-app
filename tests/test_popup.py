@@ -1,8 +1,6 @@
 """Tests for the popup window."""
 
-from datetime import datetime
 
-import pytest
 from PySide6.QtCore import Qt
 
 from src.models import Stock

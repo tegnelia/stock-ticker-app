@@ -1,12 +1,9 @@
 """Tests for the stock data service."""
 
-from datetime import datetime
 from unittest.mock import MagicMock, patch
 
 import pytest
-from PySide6.QtCore import QCoreApplication
 
-from src.models import Stock
 from src.stock_service import StockFetcher, StockService
 
 

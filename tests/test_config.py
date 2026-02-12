@@ -2,7 +2,6 @@
 
 import json
 
-import pytest
 
 from src.config import ConfigManager
 from src.models import AppConfig
@@ -104,7 +103,7 @@ class TestConfigManager:
     def test_update_invalid_field_ignored(self, temp_config_file):
         """Test that updating non-existent field is ignored."""
         manager = ConfigManager(str(temp_config_file))
-        config = manager.load()
+        manager.load()
 
         updated = manager.update(nonexistent_field="value")
 

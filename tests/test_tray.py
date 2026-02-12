@@ -1,6 +1,5 @@
 """Tests for the system tray manager."""
 
-import pytest
 from PySide6.QtWidgets import QSystemTrayIcon
 
 from src.tray import SystemTrayManager, create_default_icon
