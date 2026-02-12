@@ -1,10 +1,18 @@
 """Configuration management for the stock ticker app."""
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
 from .models import AppConfig
+
+
+def get_config_dir() -> Path:
+    """Return the platform-appropriate config directory."""
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support" / "stock-ticker"
+    return Path.home() / ".config" / "stock-ticker"
 
 
 class ConfigManager:
@@ -12,7 +20,7 @@ class ConfigManager:
 
     def __init__(self, config_path: str | None = None):
         if config_path is None:
-            config_dir = Path.home() / ".config" / "stock-ticker"
+            config_dir = get_config_dir()
             config_dir.mkdir(parents=True, exist_ok=True)
             self.config_path = config_dir / "config.json"
         else:
